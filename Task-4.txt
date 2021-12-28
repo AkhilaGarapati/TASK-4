@@ -1,0 +1,561 @@
+Q1)How to compare two JSON have the same properties without order?
+var obj1 = { name: "Person 1", age:5 };
+var obj2 = { age:5, name: "Person 1" };
+Ans: var obj1 = {"name":"Person 1","age":"5"};
+var obj2 = {"age":"5","name":"Person 1"};
+
+var compareResult=true;
+
+if(Object.keys(obj1).length==Object.keys(obj2).length){
+    for(key in obj1) { 
+        if(obj1[key] == obj2[key]) {
+            continue;
+        }
+        else {
+            compareResult=false;
+            break;
+        }
+    }
+}
+else {
+    compareResult=false;
+}
+console.log("is object equal"+compareResult);
+
+Output: is object equaltrue
+
+Q2)Use the rest countries API url -> https://restcountries.eu/rest/v2/all and display all the country flags in console
+Ans: var xhr = new XMLHttpRequest();
+xhr.open("GET", "https://raw.githubusercontent.com/rvsp/restcountries-json-data/master/res-countries.json");
+xhr.onload = function(){
+  if(xhr.status>= 200 && xhr.status<300){
+    let data =  JSON.parse(this.responseText);
+    for(let i=0; i<data.length; i++){
+      let user =  data[i];
+      console.log(user.flag);
+    }
+    
+  }
+};
+
+xhr.send();
+
+Output:
+index.js:136 https://restcountries.eu/data/afg.svg
+index.js:136 https://restcountries.eu/data/ala.svg
+index.js:136 https://restcountries.eu/data/alb.svg
+index.js:136 https://restcountries.eu/data/dza.svg
+index.js:136 https://restcountries.eu/data/asm.svg
+index.js:136 https://restcountries.eu/data/and.svg
+index.js:136 https://restcountries.eu/data/ago.svg
+index.js:136 https://restcountries.eu/data/aia.svg
+index.js:136 https://restcountries.eu/data/ata.svg
+index.js:136 https://restcountries.eu/data/atg.svg
+index.js:136 https://restcountries.eu/data/arg.svg
+index.js:136 https://restcountries.eu/data/arm.svg
+index.js:136 https://restcountries.eu/data/abw.svg
+index.js:136 https://restcountries.eu/data/aus.svg
+index.js:136 https://restcountries.eu/data/aut.svg
+index.js:136 https://restcountries.eu/data/aze.svg
+index.js:136 https://restcountries.eu/data/bhs.svg
+index.js:136 https://restcountries.eu/data/bhr.svg
+index.js:136 https://restcountries.eu/data/bgd.svg
+index.js:136 https://restcountries.eu/data/brb.svg
+index.js:136 https://restcountries.eu/data/blr.svg
+index.js:136 https://restcountries.eu/data/bel.svg
+index.js:136 https://restcountries.eu/data/blz.svg
+index.js:136 https://restcountries.eu/data/ben.svg
+index.js:136 https://restcountries.eu/data/bmu.svg
+index.js:136 https://restcountries.eu/data/btn.svg
+index.js:136 https://restcountries.eu/data/bol.svg
+index.js:136 https://restcountries.eu/data/bes.svg
+index.js:136 https://restcountries.eu/data/bih.svg
+index.js:136 https://restcountries.eu/data/bwa.svg
+index.js:136 https://restcountries.eu/data/bvt.svg
+index.js:136 https://restcountries.eu/data/bra.svg
+index.js:136 https://restcountries.eu/data/iot.svg
+index.js:136 https://restcountries.eu/data/umi.svg
+index.js:136 https://restcountries.eu/data/vgb.svg
+index.js:136 https://restcountries.eu/data/vir.svg
+index.js:136 https://restcountries.eu/data/brn.svg
+index.js:136 https://restcountries.eu/data/bgr.svg
+index.js:136 https://restcountries.eu/data/bfa.svg
+index.js:136 https://restcountries.eu/data/bdi.svg
+index.js:136 https://restcountries.eu/data/khm.svg
+index.js:136 https://restcountries.eu/data/cmr.svg
+index.js:136 https://restcountries.eu/data/can.svg
+index.js:136 https://restcountries.eu/data/cpv.svg
+index.js:136 https://restcountries.eu/data/cym.svg
+index.js:136 https://restcountries.eu/data/caf.svg
+index.js:136 https://restcountries.eu/data/tcd.svg
+index.js:136 https://restcountries.eu/data/chl.svg
+index.js:136 https://restcountries.eu/data/chn.svg
+index.js:136 https://restcountries.eu/data/cxr.svg
+index.js:136 https://restcountries.eu/data/cck.svg
+index.js:136 https://restcountries.eu/data/col.svg
+index.js:136 https://restcountries.eu/data/com.svg
+index.js:136 https://restcountries.eu/data/cog.svg
+index.js:136 https://restcountries.eu/data/cod.svg
+index.js:136 https://restcountries.eu/data/cok.svg
+index.js:136 https://restcountries.eu/data/cri.svg
+index.js:136 https://restcountries.eu/data/hrv.svg
+index.js:136 https://restcountries.eu/data/cub.svg
+index.js:136 https://restcountries.eu/data/cuw.svg
+index.js:136 https://restcountries.eu/data/cyp.svg
+index.js:136 https://restcountries.eu/data/cze.svg
+index.js:136 https://restcountries.eu/data/dnk.svg
+index.js:136 https://restcountries.eu/data/dji.svg
+index.js:136 https://restcountries.eu/data/dma.svg
+index.js:136 https://restcountries.eu/data/dom.svg
+index.js:136 https://restcountries.eu/data/ecu.svg
+index.js:136 https://restcountries.eu/data/egy.svg
+index.js:136 https://restcountries.eu/data/slv.svg
+index.js:136 https://restcountries.eu/data/gnq.svg
+index.js:136 https://restcountries.eu/data/eri.svg
+index.js:136 https://restcountries.eu/data/est.svg
+index.js:136 https://restcountries.eu/data/eth.svg
+index.js:136 https://restcountries.eu/data/flk.svg
+index.js:136 https://restcountries.eu/data/fro.svg
+index.js:136 https://restcountries.eu/data/fji.svg
+index.js:136 https://restcountries.eu/data/fin.svg
+index.js:136 https://restcountries.eu/data/fra.svg
+index.js:136 https://restcountries.eu/data/guf.svg
+index.js:136 https://restcountries.eu/data/pyf.svg
+index.js:136 https://restcountries.eu/data/atf.svg
+index.js:136 https://restcountries.eu/data/gab.svg
+index.js:136 https://restcountries.eu/data/gmb.svg
+index.js:136 https://restcountries.eu/data/geo.svg
+index.js:136 https://restcountries.eu/data/deu.svg
+index.js:136 https://restcountries.eu/data/gha.svg
+index.js:136 https://restcountries.eu/data/gib.svg
+index.js:136 https://restcountries.eu/data/grc.svg
+index.js:136 https://restcountries.eu/data/grl.svg
+index.js:136 https://restcountries.eu/data/grd.svg
+index.js:136 https://restcountries.eu/data/glp.svg
+index.js:136 https://restcountries.eu/data/gum.svg
+index.js:136 https://restcountries.eu/data/gtm.svg
+index.js:136 https://restcountries.eu/data/ggy.svg
+index.js:136 https://restcountries.eu/data/gin.svg
+index.js:136 https://restcountries.eu/data/gnb.svg
+index.js:136 https://restcountries.eu/data/guy.svg
+index.js:136 https://restcountries.eu/data/hti.svg
+index.js:136 https://restcountries.eu/data/hmd.svg
+index.js:136 https://restcountries.eu/data/vat.svg
+index.js:136 https://restcountries.eu/data/hnd.svg
+index.js:136 https://restcountries.eu/data/hkg.svg
+index.js:136 https://restcountries.eu/data/hun.svg
+index.js:136 https://restcountries.eu/data/isl.svg
+index.js:136 https://restcountries.eu/data/ind.svg
+index.js:136 https://restcountries.eu/data/idn.svg
+index.js:136 https://restcountries.eu/data/civ.svg
+index.js:136 https://restcountries.eu/data/irn.svg
+index.js:136 https://restcountries.eu/data/irq.svg
+index.js:136 https://restcountries.eu/data/irl.svg
+index.js:136 https://restcountries.eu/data/imn.svg
+index.js:136 https://restcountries.eu/data/isr.svg
+index.js:136 https://restcountries.eu/data/ita.svg
+index.js:136 https://restcountries.eu/data/jam.svg
+index.js:136 https://restcountries.eu/data/jpn.svg
+index.js:136 https://restcountries.eu/data/jey.svg
+index.js:136 https://restcountries.eu/data/jor.svg
+index.js:136 https://restcountries.eu/data/kaz.svg
+index.js:136 https://restcountries.eu/data/ken.svg
+index.js:136 https://restcountries.eu/data/kir.svg
+index.js:136 https://restcountries.eu/data/kwt.svg
+index.js:136 https://restcountries.eu/data/kgz.svg
+index.js:136 https://restcountries.eu/data/lao.svg
+index.js:136 https://restcountries.eu/data/lva.svg
+index.js:136 https://restcountries.eu/data/lbn.svg
+index.js:136 https://restcountries.eu/data/lso.svg
+index.js:136 https://restcountries.eu/data/lbr.svg
+index.js:136 https://restcountries.eu/data/lby.svg
+index.js:136 https://restcountries.eu/data/lie.svg
+index.js:136 https://restcountries.eu/data/ltu.svg
+index.js:136 https://restcountries.eu/data/lux.svg
+index.js:136 https://restcountries.eu/data/mac.svg
+index.js:136 https://restcountries.eu/data/mkd.svg
+index.js:136 https://restcountries.eu/data/mdg.svg
+index.js:136 https://restcountries.eu/data/mwi.svg
+index.js:136 https://restcountries.eu/data/mys.svg
+index.js:136 https://restcountries.eu/data/mdv.svg
+index.js:136 https://restcountries.eu/data/mli.svg
+index.js:136 https://restcountries.eu/data/mlt.svg
+index.js:136 https://restcountries.eu/data/mhl.svg
+index.js:136 https://restcountries.eu/data/mtq.svg
+index.js:136 https://restcountries.eu/data/mrt.svg
+index.js:136 https://restcountries.eu/data/mus.svg
+index.js:136 https://restcountries.eu/data/myt.svg
+index.js:136 https://restcountries.eu/data/mex.svg
+index.js:136 https://restcountries.eu/data/fsm.svg
+index.js:136 https://restcountries.eu/data/mda.svg
+index.js:136 https://restcountries.eu/data/mco.svg
+index.js:136 https://restcountries.eu/data/mng.svg
+index.js:136 https://restcountries.eu/data/mne.svg
+index.js:136 https://restcountries.eu/data/msr.svg
+index.js:136 https://restcountries.eu/data/mar.svg
+index.js:136 https://restcountries.eu/data/moz.svg
+index.js:136 https://restcountries.eu/data/mmr.svg
+index.js:136 https://restcountries.eu/data/nam.svg
+index.js:136 https://restcountries.eu/data/nru.svg
+index.js:136 https://restcountries.eu/data/npl.svg
+index.js:136 https://restcountries.eu/data/nld.svg
+index.js:136 https://restcountries.eu/data/ncl.svg
+index.js:136 https://restcountries.eu/data/nzl.svg
+index.js:136 https://restcountries.eu/data/nic.svg
+index.js:136 https://restcountries.eu/data/ner.svg
+index.js:136 https://restcountries.eu/data/nga.svg
+index.js:136 https://restcountries.eu/data/niu.svg
+index.js:136 https://restcountries.eu/data/nfk.svg
+index.js:136 https://restcountries.eu/data/prk.svg
+index.js:136 https://restcountries.eu/data/mnp.svg
+index.js:136 https://restcountries.eu/data/nor.svg
+index.js:136 https://restcountries.eu/data/omn.svg
+index.js:136 https://restcountries.eu/data/pak.svg
+index.js:136 https://restcountries.eu/data/plw.svg
+index.js:136 https://restcountries.eu/data/pse.svg
+index.js:136 https://restcountries.eu/data/pan.svg
+index.js:136 https://restcountries.eu/data/png.svg
+index.js:136 https://restcountries.eu/data/pry.svg
+index.js:136 https://restcountries.eu/data/per.svg
+index.js:136 https://restcountries.eu/data/phl.svg
+index.js:136 https://restcountries.eu/data/pcn.svg
+index.js:136 https://restcountries.eu/data/pol.svg
+index.js:136 https://restcountries.eu/data/prt.svg
+index.js:136 https://restcountries.eu/data/pri.svg
+index.js:136 https://restcountries.eu/data/qat.svg
+index.js:136 https://restcountries.eu/data/kos.svg
+index.js:136 https://restcountries.eu/data/reu.svg
+index.js:136 https://restcountries.eu/data/rou.svg
+index.js:136 https://restcountries.eu/data/rus.svg
+index.js:136 https://restcountries.eu/data/rwa.svg
+index.js:136 https://restcountries.eu/data/blm.svg
+index.js:136 https://restcountries.eu/data/shn.svg
+index.js:136 https://restcountries.eu/data/kna.svg
+index.js:136 https://restcountries.eu/data/lca.svg
+index.js:136 https://restcountries.eu/data/maf.svg
+index.js:136 https://restcountries.eu/data/spm.svg
+index.js:136 https://restcountries.eu/data/vct.svg
+index.js:136 https://restcountries.eu/data/wsm.svg
+index.js:136 https://restcountries.eu/data/smr.svg
+index.js:136 https://restcountries.eu/data/stp.svg
+index.js:136 https://restcountries.eu/data/sau.svg
+index.js:136 https://restcountries.eu/data/sen.svg
+index.js:136 https://restcountries.eu/data/srb.svg
+index.js:136 https://restcountries.eu/data/syc.svg
+index.js:136 https://restcountries.eu/data/sle.svg
+index.js:136 https://restcountries.eu/data/sgp.svg
+index.js:136 https://restcountries.eu/data/sxm.svg
+index.js:136 https://restcountries.eu/data/svk.svg
+index.js:136 https://restcountries.eu/data/svn.svg
+index.js:136 https://restcountries.eu/data/slb.svg
+index.js:136 https://restcountries.eu/data/som.svg
+index.js:136 https://restcountries.eu/data/zaf.svg
+index.js:136 https://restcountries.eu/data/sgs.svg
+index.js:136 https://restcountries.eu/data/kor.svg
+index.js:136 https://restcountries.eu/data/ssd.svg
+index.js:136 https://restcountries.eu/data/esp.svg
+index.js:136 https://restcountries.eu/data/lka.svg
+index.js:136 https://restcountries.eu/data/sdn.svg
+index.js:136 https://restcountries.eu/data/sur.svg
+index.js:136 https://restcountries.eu/data/sjm.svg
+index.js:136 https://restcountries.eu/data/swz.svg
+index.js:136 https://restcountries.eu/data/swe.svg
+index.js:136 https://restcountries.eu/data/che.svg
+index.js:136 https://restcountries.eu/data/syr.svg
+index.js:136 https://restcountries.eu/data/twn.svg
+index.js:136 https://restcountries.eu/data/tjk.svg
+index.js:136 https://restcountries.eu/data/tza.svg
+index.js:136 https://restcountries.eu/data/tha.svg
+index.js:136 https://restcountries.eu/data/tls.svg
+index.js:136 https://restcountries.eu/data/tgo.svg
+index.js:136 https://restcountries.eu/data/tkl.svg
+index.js:136 https://restcountries.eu/data/ton.svg
+index.js:136 https://restcountries.eu/data/tto.svg
+index.js:136 https://restcountries.eu/data/tun.svg
+index.js:136 https://restcountries.eu/data/tur.svg
+index.js:136 https://restcountries.eu/data/tkm.svg
+index.js:136 https://restcountries.eu/data/tca.svg
+index.js:136 https://restcountries.eu/data/tuv.svg
+index.js:136 https://restcountries.eu/data/uga.svg
+index.js:136 https://restcountries.eu/data/ukr.svg
+index.js:136 https://restcountries.eu/data/are.svg
+index.js:136 https://restcountries.eu/data/gbr.svg
+index.js:136 https://restcountries.eu/data/usa.svg
+index.js:136 https://restcountries.eu/data/ury.svg
+index.js:136 https://restcountries.eu/data/uzb.svg
+index.js:136 https://restcountries.eu/data/vut.svg
+index.js:136 https://restcountries.eu/data/ven.svg
+index.js:136 https://restcountries.eu/data/vnm.svg
+index.js:136 https://restcountries.eu/data/wlf.svg
+index.js:136 https://restcountries.eu/data/esh.svg
+index.js:136 https://restcountries.eu/data/yem.svg
+index.js:136 https://restcountries.eu/data/zmb.svg
+index.js:136 https://restcountries.eu/data/zwe.svg
+
+Q3)Use the same rest countries and print all countries name, region, sub region and population
+ANS:  var xhr = new XMLHttpRequest();
+xhr.open("GET", "https://raw.githubusercontent.com/rvsp/restcountries-json-data/master/res-countries.json");
+xhr.onload = function(){
+  if(xhr.status>= 200 && xhr.status<300){
+    let data =  JSON.parse(this.responseText);
+    for(let i=0; i<data.length; i++){
+      let user =  data[i];
+      console.log(  user.name, user.region , user.subregion , user.population ) ;
+    }
+      // console.log(data);
+  }
+};
+
+xhr.send();
+
+Output- 
+Afghanistan Asia Southern Asia 27657145
+index.js:136 Åland Islands Europe Northern Europe 28875
+index.js:136 Albania Europe Southern Europe 2886026
+index.js:136 Algeria Africa Northern Africa 40400000
+index.js:136 American Samoa Oceania Polynesia 57100
+index.js:136 Andorra Europe Southern Europe 78014
+index.js:136 Angola Africa Middle Africa 25868000
+index.js:136 Anguilla Americas Caribbean 13452
+index.js:136 Antarctica Polar  1000
+index.js:136 Antigua and Barbuda Americas Caribbean 86295
+index.js:136 Argentina Americas South America 43590400
+index.js:136 Armenia Asia Western Asia 2994400
+index.js:136 Aruba Americas Caribbean 107394
+index.js:136 Australia Oceania Australia and New Zealand 24117360
+index.js:136 Austria Europe Western Europe 8725931
+index.js:136 Azerbaijan Asia Western Asia 9730500
+index.js:136 Bahamas Americas Caribbean 378040
+index.js:136 Bahrain Asia Western Asia 1404900
+index.js:136 Bangladesh Asia Southern Asia 161006790
+index.js:136 Barbados Americas Caribbean 285000
+index.js:136 Belarus Europe Eastern Europe 9498700
+index.js:136 Belgium Europe Western Europe 11319511
+index.js:136 Belize Americas Central America 370300
+index.js:136 Benin Africa Western Africa 10653654
+index.js:136 Bermuda Americas Northern America 61954
+index.js:136 Bhutan Asia Southern Asia 775620
+index.js:136 Bolivia (Plurinational State of) Americas South America 10985059
+index.js:136 Bonaire, Sint Eustatius and Saba Americas Caribbean 17408
+index.js:136 Bosnia and Herzegovina Europe Southern Europe 3531159
+index.js:136 Botswana Africa Southern Africa 2141206
+index.js:136 Bouvet Island   0
+index.js:136 Brazil Americas South America 206135893
+index.js:136 British Indian Ocean Territory Africa Eastern Africa 3000
+index.js:136 United States Minor Outlying Islands Americas Northern America 300
+index.js:136 Virgin Islands (British) Americas Caribbean 28514
+index.js:136 Virgin Islands (U.S.) Americas Caribbean 114743
+index.js:136 Brunei Darussalam Asia South-Eastern Asia 411900
+index.js:136 Bulgaria Europe Eastern Europe 7153784
+index.js:136 Burkina Faso Africa Western Africa 19034397
+index.js:136 Burundi Africa Eastern Africa 10114505
+index.js:136 Cambodia Asia South-Eastern Asia 15626444
+index.js:136 Cameroon Africa Middle Africa 22709892
+index.js:136 Canada Americas Northern America 36155487
+index.js:136 Cabo Verde Africa Western Africa 531239
+index.js:136 Cayman Islands Americas Caribbean 58238
+index.js:136 Central African Republic Africa Middle Africa 4998000
+index.js:136 Chad Africa Middle Africa 14497000
+index.js:136 Chile Americas South America 18191900
+index.js:136 China Asia Eastern Asia 1377422166
+index.js:136 Christmas Island Oceania Australia and New Zealand 2072
+index.js:136 Cocos (Keeling) Islands Oceania Australia and New Zealand 550
+index.js:136 Colombia Americas South America 48759958
+index.js:136 Comoros Africa Eastern Africa 806153
+index.js:136 Congo Africa Middle Africa 4741000
+index.js:136 Congo (Democratic Republic of the) Africa Middle Africa 85026000
+index.js:136 Cook Islands Oceania Polynesia 18100
+index.js:136 Costa Rica Americas Central America 4890379
+index.js:136 Croatia Europe Southern Europe 4190669
+index.js:136 Cuba Americas Caribbean 11239004
+index.js:136 Curaçao Americas Caribbean 154843
+index.js:136 Cyprus Europe Southern Europe 847000
+index.js:136 Czech Republic Europe Eastern Europe 10558524
+index.js:136 Denmark Europe Northern Europe 5717014
+index.js:136 Djibouti Africa Eastern Africa 900000
+index.js:136 Dominica Americas Caribbean 71293
+index.js:136 Dominican Republic Americas Caribbean 10075045
+index.js:136 Ecuador Americas South America 16545799
+index.js:136 Egypt Africa Northern Africa 91290000
+index.js:136 El Salvador Americas Central America 6520675
+index.js:136 Equatorial Guinea Africa Middle Africa 1222442
+index.js:136 Eritrea Africa Eastern Africa 5352000
+index.js:136 Estonia Europe Northern Europe 1315944
+index.js:136 Ethiopia Africa Eastern Africa 92206005
+index.js:136 Falkland Islands (Malvinas) Americas South America 2563
+index.js:136 Faroe Islands Europe Northern Europe 49376
+index.js:136 Fiji Oceania Melanesia 867000
+index.js:136 Finland Europe Northern Europe 5491817
+index.js:136 France Europe Western Europe 66710000
+index.js:136 French Guiana Americas South America 254541
+index.js:136 French Polynesia Oceania Polynesia 271800
+index.js:136 French Southern Territories Africa Southern Africa 140
+index.js:136 Gabon Africa Middle Africa 1802278
+index.js:136 Gambia Africa Western Africa 1882450
+index.js:136 Georgia Asia Western Asia 3720400
+index.js:136 Germany Europe Western Europe 81770900
+index.js:136 Ghana Africa Western Africa 27670174
+index.js:136 Gibraltar Europe Southern Europe 33140
+index.js:136 Greece Europe Southern Europe 10858018
+index.js:136 Greenland Americas Northern America 55847
+index.js:136 Grenada Americas Caribbean 103328
+index.js:136 Guadeloupe Americas Caribbean 400132
+index.js:136 Guam Oceania Micronesia 184200
+index.js:136 Guatemala Americas Central America 16176133
+index.js:136 Guernsey Europe Northern Europe 62999
+index.js:136 Guinea Africa Western Africa 12947000
+index.js:136 Guinea-Bissau Africa Western Africa 1547777
+index.js:136 Guyana Americas South America 746900
+index.js:136 Haiti Americas Caribbean 11078033
+index.js:136 Heard Island and McDonald Islands   0
+index.js:136 Holy See Europe Southern Europe 451
+index.js:136 Honduras Americas Central America 8576532
+index.js:136 Hong Kong Asia Eastern Asia 7324300
+index.js:136 Hungary Europe Eastern Europe 9823000
+index.js:136 Iceland Europe Northern Europe 334300
+index.js:136 India Asia Southern Asia 1295210000
+index.js:136 Indonesia Asia South-Eastern Asia 258705000
+index.js:136 Côte d'Ivoire Africa Western Africa 22671331
+index.js:136 Iran (Islamic Republic of) Asia Southern Asia 79369900
+index.js:136 Iraq Asia Western Asia 37883543
+index.js:136 Ireland Europe Northern Europe 6378000
+index.js:136 Isle of Man Europe Northern Europe 84497
+index.js:136 Israel Asia Western Asia 8527400
+index.js:136 Italy Europe Southern Europe 60665551
+index.js:136 Jamaica Americas Caribbean 2723246
+index.js:136 Japan Asia Eastern Asia 126960000
+index.js:136 Jersey Europe Northern Europe 100800
+index.js:136 Jordan Asia Western Asia 9531712
+index.js:136 Kazakhstan Asia Central Asia 17753200
+index.js:136 Kenya Africa Eastern Africa 47251000
+index.js:136 Kiribati Oceania Micronesia 113400
+index.js:136 Kuwait Asia Western Asia 4183658
+index.js:136 Kyrgyzstan Asia Central Asia 6047800
+index.js:136 Lao People's Democratic Republic Asia South-Eastern Asia 6492400
+index.js:136 Latvia Europe Northern Europe 1961600
+index.js:136 Lebanon Asia Western Asia 5988000
+index.js:136 Lesotho Africa Southern Africa 1894194
+index.js:136 Liberia Africa Western Africa 4615000
+index.js:136 Libya Africa Northern Africa 6385000
+index.js:136 Liechtenstein Europe Western Europe 37623
+index.js:136 Lithuania Europe Northern Europe 2872294
+index.js:136 Luxembourg Europe Western Europe 576200
+index.js:136 Macao Asia Eastern Asia 649100
+index.js:136 Macedonia (the former Yugoslav Republic of) Europe Southern Europe 2058539
+index.js:136 Madagascar Africa Eastern Africa 22434363
+index.js:136 Malawi Africa Eastern Africa 16832910
+index.js:136 Malaysia Asia South-Eastern Asia 31405416
+index.js:136 Maldives Asia Southern Asia 344023
+index.js:136 Mali Africa Western Africa 18135000
+index.js:136 Malta Europe Southern Europe 425384
+index.js:136 Marshall Islands Oceania Micronesia 54880
+index.js:136 Martinique Americas Caribbean 378243
+index.js:136 Mauritania Africa Western Africa 3718678
+index.js:136 Mauritius Africa Eastern Africa 1262879
+index.js:136 Mayotte Africa Eastern Africa 226915
+index.js:136 Mexico Americas Central America 122273473
+index.js:136 Micronesia (Federated States of) Oceania Micronesia 102800
+index.js:136 Moldova (Republic of) Europe Eastern Europe 3553100
+index.js:136 Monaco Europe Western Europe 38400
+index.js:136 Mongolia Asia Eastern Asia 3093100
+index.js:136 Montenegro Europe Southern Europe 621810
+index.js:136 Montserrat Americas Caribbean 4922
+index.js:136 Morocco Africa Northern Africa 33337529
+index.js:136 Mozambique Africa Eastern Africa 26423700
+index.js:136 Myanmar Asia South-Eastern Asia 51419420
+index.js:136 Namibia Africa Southern Africa 2324388
+index.js:136 Nauru Oceania Micronesia 10084
+index.js:136 Nepal Asia Southern Asia 28431500
+index.js:136 Netherlands Europe Western Europe 17019800
+index.js:136 New Caledonia Oceania Melanesia 268767
+index.js:136 New Zealand Oceania Australia and New Zealand 4697854
+index.js:136 Nicaragua Americas Central America 6262703
+index.js:136 Niger Africa Western Africa 20715000
+index.js:136 Nigeria Africa Western Africa 186988000
+index.js:136 Niue Oceania Polynesia 1470
+index.js:136 Norfolk Island Oceania Australia and New Zealand 2302
+index.js:136 Korea (Democratic People's Republic of) Asia Eastern Asia 25281000
+index.js:136 Northern Mariana Islands Oceania Micronesia 56940
+index.js:136 Norway Europe Northern Europe 5223256
+index.js:136 Oman Asia Western Asia 4420133
+index.js:136 Pakistan Asia Southern Asia 194125062
+index.js:136 Palau Oceania Micronesia 17950
+index.js:136 Palestine, State of Asia Western Asia 4682467
+index.js:136 Panama Americas Central America 3814672
+index.js:136 Papua New Guinea Oceania Melanesia 8083700
+index.js:136 Paraguay Americas South America 6854536
+index.js:136 Peru Americas South America 31488700
+index.js:136 Philippines Asia South-Eastern Asia 103279800
+index.js:136 Pitcairn Oceania Polynesia 56
+index.js:136 Poland Europe Eastern Europe 38437239
+index.js:136 Portugal Europe Southern Europe 10374822
+index.js:136 Puerto Rico Americas Caribbean 3474182
+index.js:136 Qatar Asia Western Asia 2587564
+index.js:136 Republic of Kosovo Europe Eastern Europe 1733842
+index.js:136 Réunion Africa Eastern Africa 840974
+index.js:136 Romania Europe Eastern Europe 19861408
+index.js:136 Russian Federation Europe Eastern Europe 146599183
+index.js:136 Rwanda Africa Eastern Africa 11553188
+index.js:136 Saint Barthélemy Americas Caribbean 9417
+index.js:136 Saint Helena, Ascension and Tristan da Cunha Africa Western Africa 4255
+index.js:136 Saint Kitts and Nevis Americas Caribbean 46204
+index.js:136 Saint Lucia Americas Caribbean 186000
+index.js:136 Saint Martin (French part) Americas Caribbean 36979
+index.js:136 Saint Pierre and Miquelon Americas Northern America 6069
+index.js:136 Saint Vincent and the Grenadines Americas Caribbean 109991
+index.js:136 Samoa Oceania Polynesia 194899
+index.js:136 San Marino Europe Southern Europe 33005
+index.js:136 Sao Tome and Principe Africa Middle Africa 187356
+index.js:136 Saudi Arabia Asia Western Asia 32248200
+index.js:136 Senegal Africa Western Africa 14799859
+index.js:136 Serbia Europe Southern Europe 7076372
+index.js:136 Seychelles Africa Eastern Africa 91400
+index.js:136 Sierra Leone Africa Western Africa 7075641
+index.js:136 Singapore Asia South-Eastern Asia 5535000
+index.js:136 Sint Maarten (Dutch part) Americas Caribbean 38247
+index.js:136 Slovakia Europe Eastern Europe 5426252
+index.js:136 Slovenia Europe Southern Europe 2064188
+index.js:136 Solomon Islands Oceania Melanesia 642000
+index.js:136 Somalia Africa Eastern Africa 11079000
+index.js:136 South Africa Africa Southern Africa 55653654
+index.js:136 South Georgia and the South Sandwich Islands Americas South America 30
+index.js:136 Korea (Republic of) Asia Eastern Asia 50801405
+index.js:136 South Sudan Africa Middle Africa 12131000
+index.js:136 Spain Europe Southern Europe 46438422
+index.js:136 Sri Lanka Asia Southern Asia 20966000
+index.js:136 Sudan Africa Northern Africa 39598700
+index.js:136 Suriname Americas South America 541638
+index.js:136 Svalbard and Jan Mayen Europe Northern Europe 2562
+index.js:136 Swaziland Africa Southern Africa 1132657
+index.js:136 Sweden Europe Northern Europe 9894888
+index.js:136 Switzerland Europe Western Europe 8341600
+index.js:136 Syrian Arab Republic Asia Western Asia 18564000
+index.js:136 Taiwan Asia Eastern Asia 23503349
+index.js:136 Tajikistan Asia Central Asia 8593600
+index.js:136 Tanzania, United Republic of Africa Eastern Africa 55155000
+index.js:136 Thailand Asia South-Eastern Asia 65327652
+index.js:136 Timor-Leste Asia South-Eastern Asia 1167242
+index.js:136 Togo Africa Western Africa 7143000
+index.js:136 Tokelau Oceania Polynesia 1411
+index.js:136 Tonga Oceania Polynesia 103252
+index.js:136 Trinidad and Tobago Americas Caribbean 1349667
+index.js:136 Tunisia Africa Northern Africa 11154400
+index.js:136 Turkey Asia Western Asia 78741053
+index.js:136 Turkmenistan Asia Central Asia 4751120
+index.js:136 Turks and Caicos Islands Americas Caribbean 31458
+index.js:136 Tuvalu Oceania Polynesia 10640
+index.js:136 Uganda Africa Eastern Africa 33860700
+index.js:136 Ukraine Europe Eastern Europe 42692393
+index.js:136 United Arab Emirates Asia Western Asia 9856000
+index.js:136 United Kingdom of Great Britain and Northern Ireland Europe Northern Europe 65110000
+index.js:136 United States of America Americas Northern America 323947000
+index.js:136 Uruguay Americas South America 3480222
+index.js:136 Uzbekistan Asia Central Asia 31576400
+index.js:136 Vanuatu Oceania Melanesia 277500
+index.js:136 Venezuela (Bolivarian Republic of) Americas South America 31028700
+index.js:136 Viet Nam Asia South-Eastern Asia 92700000
+index.js:136 Wallis and Futuna Oceania Polynesia 11750
+index.js:136 Western Sahara Africa Northern Africa 510713
+index.js:136 Yemen Asia Western Asia 27478000
+index.js:136 Zambia Africa Eastern Africa 15933883
+index.js:136 Zimbabwe Africa Eastern Africa 14240168
